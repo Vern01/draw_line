@@ -8,10 +8,10 @@ cor_t	set_cor(int x1, int y1, int x2, int y2)
 	cor.y1 = y1;
 	cor.x2 = x2;
 	cor.y2 = y2;
-	return cor;
+	return (cor);
 }
 
-void    bresenham(cor_t cor, mlx_t mlx)
+/*void    bresenham(cor_t cor, mlx_t mlx)
 {
 	int		dx;
 	int		dy;
@@ -34,7 +34,7 @@ void    bresenham(cor_t cor, mlx_t mlx)
 		}
 		cor.x1++;
 	}
-/*	while (cor.x1 <= cor.x2)
+	while (cor.x1 <= cor.x2)
 	{
 		mlx_pixel_put(mlx.mlx, mlx.win, cor.x1, cor.y1, color);
 		eps += dy;
@@ -45,5 +45,5 @@ void    bresenham(cor_t cor, mlx_t mlx)
 			eps -= dx;
 		}
 		cor.x1++;
-	}*/
-}
+	}
+}*/

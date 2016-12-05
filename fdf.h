@@ -25,15 +25,15 @@ typedef struct	cor_s
 
 typedef struct	line_s
 {
-	float		dx;
-	float		dy;
-	float		de;
-	float		e;
+	int		dx;
+	int		dy;
+	int		eps;
 	int		swap;
 }				line_t;
 
 void    bresenham(cor_t cor, mlx_t mlx);
 void	bresenham_p(cor_t cor, mlx_t mlx);
+void	draw_line(cor_t cor, mlx_t mlx);
 cor_t	set_cor(int x1, int y1, int x2, int y2);
 
 #endif
