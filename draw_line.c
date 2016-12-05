@@ -40,64 +40,8 @@ void	draw_line(cor_t cor, mlx_t mlx)
     mlx_pixel_put(mlx.mlx, mlx.win, cor.x1, cor.y1, 0x00FFCCCC);
     mlx_pixel_put(mlx.mlx, mlx.win, cor.x2, cor.y2, 0x00FFCCCC);
     set_line_info(&line, cor);
-//    if (abs(cor.y1 - cor.y2) > abs(cor.x1 - cor.x2))
-//        line.swap = swap_xy(&cor);
-    if (cor.y1 > cor.y2)
-        swap_points(&cor);
-    if ((line.dy > 0 && line.dx < 0))
-    {
-/*        while (cor.x1 <= cor.x2)
-	    {
-            if (line.swap)
-              mlx_pixel_put(mlx.mlx, mlx.win, cor.y1, cor.x1, 0x00FFFFFF);
-            else  
-	        	mlx_pixel_put(mlx.mlx, mlx.win, cor.x1, cor.y1, 0x00FFFFFF);
-	       	line.eps += line.dy;
-	    	if((line.eps << 1) <= line.dx * -1)
-    		{
-    			cor.y1--;
-    			line.eps += line.dx;
-    		}
-     		cor.x1++;
-	    }*/
-		while (cor.y1 <= cor.y2)
-	    {
-	        mlx_pixel_put(mlx.mlx, mlx.win, cor.x1, cor.y1, 0x00FFFFFF);
-	       	line.eps += line.dx;
-	    	if((line.eps << 1) <= line.dy * -1)
-    		{
-    			cor.x1--;
-    			line.eps += line.dy;
-    		}
-     		cor.y1++;
-	    }
-    }
-    else
-    {
-/*	    while (cor.x1 <= cor.x2)
-	    {
-		    if (line.swap)
-                mlx_pixel_put(mlx.mlx, mlx.win, cor.y1, cor.x1, 0x00FFFFFF);
-            else  
-	        	mlx_pixel_put(mlx.mlx, mlx.win, cor.x1, cor.y1, 0x00FFFFFF);
-		    line.eps += line.dy;
-	    	if((line.eps << 1) >= line.dx)
-	    	{	
-	    		cor.y1++;
-		    	line.eps -= line.dx;
-	    	}
-	    	cor.x1++;
-	    }*/
-		while (cor.y1 <= cor.y2)
-	    {
-	        mlx_pixel_put(mlx.mlx, mlx.win, cor.x1, cor.y1, 0x00FFFFFF);
-		    line.eps += line.dx;
-	    	if((line.eps << 1) <= line.dy)
-	    	{	
-	    		cor.x1++;
-		    	line.eps -= line.dy;
-	    	}
-	    	cor.y1++;
-	    }
-    }
+    if (abs(cor.y1 - cor.y2) > abs(cor.x1 - cor.x2))
+		solve_through_y(cor, line, mlx);
+	else
+		solve_through_x(cor, line, mlx);
 }
